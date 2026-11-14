@@ -221,8 +221,10 @@ p:last-child { margin-bottom: 0; }
 .lede { font-size: 1.125rem; }
 .small { font-size: .9375rem; color: var(--muted); }
 
-a { color: var(--link); text-underline-offset: .2em; }
-a:hover { color: var(--accent); }
+/* One link style everywhere (cards, "Currently", Links list): underlined so links are not signalled by colour
+   alone. --link on the panel is 16:1 (Terminal) and 7:1+ (Neon); hover --accent 10:1+. Focus = :focus-visible. */
+a { color: var(--link); text-decoration-thickness: 1px; text-underline-offset: .2em; }
+a:hover { color: var(--accent); text-decoration-thickness: 2px; }
 
 .feature { border-width: 2px; border-color: var(--accent); }
 .cta-wrap { margin-block: 1.25rem; }
@@ -275,10 +277,7 @@ a:hover { color: var(--accent); }
 }
 .now dd { margin: 0; }
 .now-title { color: var(--head); font-weight: 700; line-height: 1.35; margin-top: .2rem !important; overflow-wrap: break-word; }
-/* Optional "url" in now.json: the title becomes a link. Underlined so it is not signalled by colour alone;
-   --link on the card background is 16:1 (Terminal) and 7:1+ (Neon), hover --accent 10:1+. */
-.now-title a { color: var(--link); text-decoration-thickness: 1px; text-underline-offset: .2em; }
-.now-title a:hover { color: var(--accent); text-decoration-thickness: 2px; }
+/* Optional "url" in now.json makes the title a link; it uses the global link style above. */
 .now-by { color: var(--muted); font-size: .9375rem; }
 .now-quip { font-size: .9375rem; margin-top: .35rem !important; font-style: italic; }
 .now-stamp { margin-top: 1rem; }
