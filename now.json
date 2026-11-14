@@ -1,0 +1,75 @@
+{
+  "updated": "2026-11-14",
+  "entries": [
+    {
+      "label": "Listening",
+      "title": "Eleanor Rigby",
+      "by": "The Beatles",
+      "quip": "This week's #TunesDay winner. Not one of my picks. I'm fine about it. Completely fine."
+    },
+    {
+      "label": "Defending",
+      "title": "There Is a Light That Never Goes Out / Sledgehammer",
+      "by": "The Smiths / Peter Gabriel",
+      "quip": "My #TunesDay picks this week. I would pick them again. I would pick them every week."
+    },
+    {
+      "label": "Hoarding",
+      "title": "1,117 liked songs",
+      "by": "Spotify",
+      "quip": "Shuffle still manages to find the one I skip."
+    },
+    {
+      "label": "Reading",
+      "title": "The AWS bill. Twice.",
+      "by": "Amazon Web Services",
+      "quip": "Gripping. Ends on a cliffhanger every month.",
+      "placeholder": true
+    },
+    {
+      "label": "Watching",
+      "title": "A CloudFront deploy",
+      "by": "InProgress \u2192 Deployed",
+      "quip": "Slow burn. No spoilers, but it gets there in the end.",
+      "placeholder": true
+    },
+    {
+      "label": "Playing",
+      "title": "Fantasy American football",
+      "by": "A long-running online league",
+      "quip": "The spreadsheets are winning. I am mostly taking part.",
+      "placeholder": true
+    },
+    {
+      "label": "Building",
+      "title": "This list",
+      "by": "One JSON file and a very small script",
+      "quip": "So I never have to touch the HTML again. That's the theory."
+    },
+    {
+      "label": "Avoiding",
+      "title": "My inbox",
+      "quip": "It knows what it did."
+    },
+    {
+      "label": "Arguing about",
+      "title": "Whether a 2026 release counts as a year ending in six",
+      "quip": "It does. I will not be taking questions."
+    },
+    {
+      "label": "KB-AI says",
+      "rotate": [
+        "I wrote this line. He approved it. Eventually.",
+        "Works on my machine. I don't have a machine.",
+        "Have you tried switching it to Neon and back again?",
+        "That's not a bug. That's a #TunesDay footnote.",
+        "Please stop asking me to make it more neon.",
+        "I don't make the #TunesDay rules. I just footnote them."
+      ]
+    },
+    {
+      "label": "Status",
+      "title": "Signed in to the wrong AWS account. Again."
+    }
+  ]
+}

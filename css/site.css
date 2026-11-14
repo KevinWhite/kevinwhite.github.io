@@ -254,10 +254,31 @@ a:hover { color: var(--accent); }
 }
 .card p { font-size: .975rem; }
 
-.now { margin: 0; display: grid; grid-template-columns: max-content 1fr; gap: .4rem 1.25rem; }
-.now dt { color: var(--muted); }
-.now dt::after { content: ":"; }
+/* "Currently" list, generated from now.json by build.py. */
+.now {
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 17rem), 1fr));
+  gap: 1rem;
+}
+.now-item {
+  border: 1px dashed var(--border);
+  border-radius: 10px;
+  padding: .85rem 1rem;
+}
+.now dt {
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: .875rem;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
 .now dd { margin: 0; }
+.now-title { color: var(--head); font-weight: 700; line-height: 1.35; margin-top: .2rem !important; }
+.now-by { color: var(--muted); font-size: .9375rem; }
+.now-quip { font-size: .9375rem; margin-top: .35rem !important; font-style: italic; }
+.now .rotate { quotes: "\201C" "\201D"; }
+.now-stamp { margin-top: 1rem; }
 
 .links { margin: 0; padding-left: 1.25rem; }
 .links li { margin-block: .3rem; }
@@ -297,8 +318,6 @@ a:hover { color: var(--accent); }
   body { font-size: 1rem; }
   .panel { padding: 1rem; }
   .bar { justify-content: center; }
-  .now { grid-template-columns: 1fr; gap: 0; }
-  .now dd { margin-bottom: .6rem; }
   .cta { font-size: 1rem; padding: .7rem 1.1rem; }
   .cta span { white-space: nowrap; }
 }

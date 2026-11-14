@@ -26,6 +26,15 @@
   }
   apply(root.getAttribute("data-theme") || "terminal");
 
+  /* ---- "KB-AI says": the build renders one line; swap in a random one per visit ---- */
+  var rot = document.querySelectorAll("[data-rotate]");
+  for (var r = 0; r < rot.length; r++) {
+    try {
+      var lines = JSON.parse(rot[r].getAttribute("data-rotate"));
+      if (lines.length) rot[r].textContent = lines[Math.floor(Math.random() * lines.length)];
+    } catch (e) { /* keep the build-time line */ }
+  }
+
   /* ---- Banner: play once, pausable (WCAG 2.2.2), still image for reduced motion ---- */
   var video = document.querySelector(".banner-video");
   var btn = document.querySelector(".banner-btn");
