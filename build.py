@@ -23,7 +23,7 @@ now.json:
   S (section) keys: "heading" (required), "paragraphs" [..], "inset" (quip box), "cta" {"text","url"},
     "note", "cards" [{"title","url"?,"text","placeholder"?}], "links" [{"text","url","note"?}], "placeholder"?,
     "experience" {"label","since": "YYYY-MM-DD"}  -> "<label>: N years", N computed now (js/site.js recomputes on load),
-    "figures" [{"src","width","height","alt","caption","credit"}]  (self-hosted /assets images; credit = inline markup),
+    "figures" [{"src","width","height","alt","caption","credit"?}]  (self-hosted /assets images; credit = inline markup),
     "timeline" {"heading","items": [inline text..],"after"?}  (an ordered list under an h3; "after" is a second inset)
   MODE "inset_by": optional attribution shown under every inset in that mode (innie: Kier Eagan).
   Entry keys: {"label", "title", "by"?, "quip"?, "url"?, "placeholder"?}
@@ -225,8 +225,9 @@ def render_section(o, d, mode, prompt, key, sec, m, updated):
             o(d + 2, '<figure class="figure">')
             o(d + 3, f'<img src="{esc(src)}" width="{f["width"]}" height="{f["height"]}" loading="lazy" decoding="async" '
                      f'alt="{esc(need_str(w, f, "alt"))}">')
-            o(d + 3, f'<figcaption>{inline(w, need_str(w, f, "caption"))} '
-                     f'<span class="credit">{inline(w, need_str(w, f, "credit"))}</span></figcaption>')
+            credit = (f' <span class="credit">{inline(w, need_str(w, f, "credit"))}</span>'
+                      if "credit" in f else "")  # optional: Kevin's own images carry none
+            o(d + 3, f'<figcaption>{inline(w, need_str(w, f, "caption"))}{credit}</figcaption>')
             o(d + 2, '</figure>')
         o(d + 1, '</div>')
     if "timeline" in sec:

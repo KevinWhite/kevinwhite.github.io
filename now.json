@@ -141,12 +141,11 @@
         "inset": "The tools have changed. The work remains mysterious and important.",
         "figures": [
           {
-            "src": "/assets/fortran-coding-form.webp",
+            "src": "/assets/cobol-coding-form.webp",
             "width": 800,
-            "height": 570,
-            "alt": "A blank IBM FORTRAN coding form: a printed grid of numbered columns, one program statement per row, to be written in pencil and punched onto cards.",
-            "caption": "An IBM FORTRAN coding form.",
-            "credit": "Photo: Arnold Reinhold, [CC BY 2.5](https://creativecommons.org/licenses/by/2.5/), via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:FortranCodingForm.agr.jpg)."
+            "height": 500,
+            "alt": "A blank IBM COBOL coding form, with numbered rows and columns 1 to 80 for one punched card per line.",
+            "caption": "An IBM COBOL coding form. One line, one punched card."
           },
           {
             "src": "/assets/icl-2966-tnmoc.webp",
@@ -165,8 +164,8 @@
             "[Adecco](https://www.adecco.co.uk/)",
             "[Corby Borough Council](https://en.wikipedia.org/wiki/Corby_Borough_Council) (now abolished)",
             "[CSC (Computer Sciences Corporation)](https://en.wikipedia.org/wiki/Computer_Sciences_Corporation)",
-            "Serco",
-            "LGSS",
+            "[Serco](https://www.serco.com/)",
+            "[LGSS (Local Government Shared Services)](https://www.westnorthants.gov.uk/local-government-shared-services)",
             "[West Northamptonshire Council](https://www.westnorthants.gov.uk/)"
           ],
           "after": "Several of these departments were later merged into larger ones. The Board calls this consolidation."
@@ -235,9 +234,10 @@
       },
       {
         "label": "Watching",
-        "title": "Silent War",
+        "title": "The Undeclared War",
         "by": "Channel 4",
-        "quip": "A corporate drama. Strictly research."
+        "url": "https://www.channel4.com/programmes/the-undeclared-war",
+        "quip": "Analysts defend the nation's systems from attackers nobody can see. The Board admires a team that keeps its work to itself. Strictly research."
       },
       {
         "label": "Playing",
@@ -267,6 +267,8 @@
       {
         "label": "Arguing about",
         "title": "The SaaSpocalypse",
+        "by": "Pinsent Masons, Out-Law",
+        "url": "https://www.pinsentmasons.com/out-law/analysis/saaspocalypse-changes-tech-investing-age-ai",
         "quip": "Whether the software outlives the subscription. Wiles."
       },
       {
