@@ -131,17 +131,51 @@
     "sections": {
       "about": {
         "heading": "Orientation",
-        "placeholder": true,
+        "experience": {
+          "label": "Experience",
+          "since": "1988-08-08"
+        },
         "paragraphs": [
-          "[Awaiting refinement] Your innie's introduction will appear here once it has been approved."
+          "From pen and paper on coding sheets for an ICL 2966 mainframe, to a MacBook Pro M2 Max and KB-AI."
         ],
-        "inset": "The work is important. The details are severed."
+        "inset": "The tools have changed. The work remains mysterious and important.",
+        "figures": [
+          {
+            "src": "/assets/fortran-coding-form.webp",
+            "width": 800,
+            "height": 570,
+            "alt": "A blank IBM FORTRAN coding form: a printed grid of numbered columns, one program statement per row, to be written in pencil and punched onto cards.",
+            "caption": "An IBM FORTRAN coding form.",
+            "credit": "Photo: Arnold Reinhold, [CC BY 2.5](https://creativecommons.org/licenses/by/2.5/), via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:FortranCodingForm.agr.jpg)."
+          },
+          {
+            "src": "/assets/icl-2966-tnmoc.webp",
+            "width": 800,
+            "height": 450,
+            "alt": "An ICL 2966 mainframe installation in beige and orange cabinets: rows of exchangeable disc drives in front, processor cabinets and operator terminals behind.",
+            "caption": "An ICL 2966 at The National Museum of Computing.",
+            "credit": "Photo: BadgersCP, [CC0](https://creativecommons.org/publicdomain/zero/1.0/), via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:ICL_2966_Mainframe_TNMOC-CP.jpg)."
+          }
+        ],
+        "timeline": {
+          "heading": "Prior assignments",
+          "items": [
+            "[Northampton Borough Council](https://en.wikipedia.org/wiki/Northampton_Borough_Council) (now abolished)",
+            "[National Mutual Life Assurance Society](https://en.wikipedia.org/wiki/National_Mutual_Life_Assurance_Society)",
+            "[Adecco](https://www.adecco.co.uk/)",
+            "[Corby Borough Council](https://en.wikipedia.org/wiki/Corby_Borough_Council) (now abolished)",
+            "[CSC (Computer Sciences Corporation)](https://en.wikipedia.org/wiki/Computer_Sciences_Corporation)",
+            "Serco",
+            "LGSS",
+            "[West Northamptonshire Council](https://www.westnorthants.gov.uk/)"
+          ],
+          "after": "Several of these departments were later merged into larger ones. The Board calls this consolidation."
+        }
       },
       "tunes": {
         "heading": "Music Dance Experience",
-        "placeholder": true,
         "paragraphs": [
-          "[Awaiting refinement]"
+          "A sanctioned interval of Frolic, one of the Four Tempers. Attendance is encouraged."
         ],
         "cta": {
           "text": "This week's #TunesDay verdict",
@@ -152,19 +186,16 @@
         "heading": "Macrodata Refinement",
         "cards": [
           {
-            "title": "[File pending]",
-            "text": "[Awaiting refinement]",
-            "placeholder": true
+            "title": "BinBot MCP ('Dusty')",
+            "text": "Dusty knows which day your bins go out. Dusty does not need to know why. Probity."
           },
           {
-            "title": "[File pending]",
-            "text": "[Awaiting refinement]",
-            "placeholder": true
+            "title": "VoiceBot",
+            "text": "It answers the telephone so that no refiner need. Benevolence."
           },
           {
-            "title": "[File pending]",
-            "text": "[Awaiting refinement]",
-            "placeholder": true
+            "title": "ChatBot",
+            "text": "It speaks with residents at every hour, with the Cheer it has been asked to feel."
           }
         ]
       },
@@ -190,53 +221,63 @@
     "entries": [
       {
         "label": "Listening",
-        "title": "[Awaiting refinement]",
-        "placeholder": true
+        "title": "Gears of War: The Soundtrack",
+        "by": "Kevin Riepl",
+        "url": "https://en.wikipedia.org/wiki/Kevin_Riepl",
+        "quip": "Approved focus music. Best music to refine to."
       },
       {
         "label": "Reading",
-        "title": "[Awaiting refinement]",
-        "placeholder": true
+        "title": "The Monk's Mindset",
+        "by": "Sam Yo",
+        "url": "https://www.goodreads.com/book/show/241509152-the-monk-s-mindset",
+        "quip": "Finding stillness in a world that won't stop moving. The Board finds stillness in its staff agreeable."
       },
       {
         "label": "Watching",
-        "title": "[Awaiting refinement]",
-        "placeholder": true
+        "title": "Silent War",
+        "by": "Channel 4",
+        "quip": "A corporate drama. Strictly research."
       },
       {
         "label": "Playing",
-        "title": "[Awaiting refinement]",
-        "placeholder": true
-      },
-      {
-        "label": "Learning",
-        "title": "[Awaiting refinement]",
-        "placeholder": true
+        "title": "AWS BuilderCards",
+        "by": "Amazon Web Services",
+        "url": "https://aws.amazon.com/gametech/buildercards/",
+        "quip": "A card game in which on-premises servers are replaced by managed services. Recreational, and billable."
       },
       {
         "label": "Building",
-        "title": "[Awaiting refinement]",
-        "placeholder": true
+        "title": "MCP servers",
+        "by": "Model Context Protocol",
+        "url": "https://modelcontextprotocol.io/",
+        "quip": "Protocols that let the machine reach the tools. Nimbleness."
+      },
+      {
+        "label": "Learning",
+        "title": "More MCP servers",
+        "url": "https://modelcontextprotocol.io/",
+        "quip": "Repetition is the root of refinement."
       },
       {
         "label": "Avoiding",
-        "title": "[Awaiting refinement]",
-        "placeholder": true
+        "title": "People",
+        "quip": "The floor is quieter this way. Humility."
       },
       {
         "label": "Arguing about",
-        "title": "[Awaiting refinement]",
-        "placeholder": true
+        "title": "The SaaSpocalypse",
+        "quip": "Whether the software outlives the subscription. Wiles."
       },
       {
         "label": "Kier says",
-        "title": "[Awaiting refinement]",
-        "placeholder": true
+        "title": "Every problem is a requirement nobody wrote down."
       }
     ],
     "footer": [
       "Please enjoy each card equally.",
       "No cookies. No tracking. No analytics."
-    ]
+    ],
+    "inset_by": "Kier Eagan, Founder"
   }
 }

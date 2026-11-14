@@ -21,7 +21,11 @@ now.json:
     "footer":   list of footer lines
   }
   S (section) keys: "heading" (required), "paragraphs" [..], "inset" (quip box), "cta" {"text","url"},
-    "note", "cards" [{"title","url"?,"text","placeholder"?}], "links" [{"text","url","note"?}], "placeholder"?
+    "note", "cards" [{"title","url"?,"text","placeholder"?}], "links" [{"text","url","note"?}], "placeholder"?,
+    "experience" {"label","since": "YYYY-MM-DD"}  -> "<label>: N years", N computed now (js/site.js recomputes on load),
+    "figures" [{"src","width","height","alt","caption","credit"}]  (self-hosted /assets images; credit = inline markup),
+    "timeline" {"heading","items": [inline text..],"after"?}  (an ordered list under an h3; "after" is a second inset)
+  MODE "inset_by": optional attribution shown under every inset in that mode (innie: Kier Eagan).
   Entry keys: {"label", "title", "by"?, "quip"?, "url"?, "placeholder"?}
 
 Text fields accept three bits of inline markup: **bold**, *italic* and [link text](url).
@@ -43,8 +47,11 @@ MODES = ("outie", "innie")
 SECTIONS = ("about", "tunes", "make", "now", "links")
 REGIONS = ("host", "notice", "main", "foot")
 
-MODE_KEYS = {"host", "notice", "prompt", "sections", "entries", "footer"}
-SECTION_KEYS = {"heading", "paragraphs", "inset", "cta", "note", "cards", "links", "placeholder"}
+MODE_KEYS = {"host", "notice", "prompt", "sections", "entries", "footer", "inset_by"}
+SECTION_KEYS = {"heading", "paragraphs", "inset", "cta", "note", "cards", "links", "placeholder",
+                "experience", "figures", "timeline"}
+FIGURE_KEYS = {"src", "width", "height", "alt", "caption", "credit"}
+TODAY = datetime.date.today()
 CARD_KEYS = {"title", "url", "text", "placeholder"}
 LINK_KEYS = {"text", "url", "note"}
 ENTRY_KEYS = {"label", "title", "by", "quip", "url", "placeholder"}
@@ -135,6 +142,22 @@ def heading(mode, prompt, key, sec, where):
     return f'<h2 id="{key}-h-{mode}">{pre}{text}</h2>'
 
 
+def years_since(since, today=None):
+    """Whole years from `since` to today; rolls over on the anniversary."""
+    today = today or TODAY
+    return today.year - since.year - ((today.month, today.day) < (since.month, since.day))
+
+
+def render_inset(o, d, where, text, by):
+    if by:
+        o(d, '<figure class="inset">')
+        o(d + 1, f'<blockquote><p>{inline(where, text)}</p></blockquote>')
+        o(d + 1, f'<figcaption>{esc(by)}</figcaption>')
+        o(d, '</figure>')
+    else:
+        o(d, f'<div class="inset"><p>{inline(where, text)}</p></div>')
+
+
 def render_now(o, d, mode, entries, updated):
     where = f"{mode}.entries"
     if not isinstance(entries, list) or not entries:
@@ -167,14 +190,58 @@ def render_section(o, d, mode, prompt, key, sec, m, updated):
     cls = {"about": "panel about", "tunes": "panel feature"}.get(key, "panel")
     o(d, f'<section class="{cls}" aria-labelledby="{key}-h-{mode}">')
     o(d + 1, heading(mode, prompt, key, sec, where))
+    by = m.get("inset_by")
+    if "experience" in sec:
+        ex = sec["experience"]
+        only(f"{where}.experience", ex, {"label", "since"})
+        try:
+            since = datetime.date.fromisoformat(ex.get("since"))
+        except (TypeError, ValueError):
+            fail(f'{where}.experience: "since" must be YYYY-MM-DD')
+        n = years_since(since)
+        o(d + 1, f'<p class="lede experience"><strong>{esc(need_str(where, ex, "label"))}:</strong> '
+                 f'<span data-years-since="{since.isoformat()}">{n}</span> years</p>')
     paras = sec.get("paragraphs", [])
     if not isinstance(paras, list):
         fail(f'{where}: "paragraphs" must be a list')
     for i, p in enumerate(paras):
-        lede = ' class="lede"' if key == "about" and i == 0 else ""
+        lede = ' class="lede"' if key == "about" and i == 0 and "experience" not in sec else ""
         o(d + 1, f"<p{lede}>{inline(where, p)}</p>")
     if sec.get("inset"):
-        o(d + 1, f'<div class="inset"><p>{inline(where, sec["inset"])}</p></div>')
+        render_inset(o, d + 1, where, sec["inset"], by)
+    if "figures" in sec:
+        figs = sec["figures"]
+        if not isinstance(figs, list) or not figs:
+            fail(f'{where}: "figures" must be a non-empty list')
+        o(d + 1, '<div class="figures">')
+        for n, f in enumerate(figs, 1):
+            w = f"{where}.figures[{n}]"
+            only(w, f, FIGURE_KEYS)
+            src = need_str(w, f, "src")
+            if not src.startswith("/assets/") or not (HERE / src.lstrip("/")).is_file():
+                fail(f'{w}: "src" must be an existing self-hosted /assets/ file, got {src!r}')
+            if not all(isinstance(f.get(k), int) and f[k] > 0 for k in ("width", "height")):
+                fail(f'{w}: "width" and "height" must be positive integers')
+            o(d + 2, '<figure class="figure">')
+            o(d + 3, f'<img src="{esc(src)}" width="{f["width"]}" height="{f["height"]}" loading="lazy" decoding="async" '
+                     f'alt="{esc(need_str(w, f, "alt"))}">')
+            o(d + 3, f'<figcaption>{inline(w, need_str(w, f, "caption"))} '
+                     f'<span class="credit">{inline(w, need_str(w, f, "credit"))}</span></figcaption>')
+            o(d + 2, '</figure>')
+        o(d + 1, '</div>')
+    if "timeline" in sec:
+        tl = sec["timeline"]
+        only(f"{where}.timeline", tl, {"heading", "items", "after"})
+        items = tl.get("items")
+        if not isinstance(items, list) or not items:
+            fail(f'{where}.timeline: "items" must be a non-empty list')
+        o(d + 1, f'<h3 id="{key}-tl-{mode}">{esc(need_str(where, tl, "heading"))}</h3>')
+        o(d + 1, f'<ol class="timeline" role="list" aria-labelledby="{key}-tl-{mode}">')
+        for n, it in enumerate(items, 1):
+            o(d + 2, f"<li>{inline(f'{where}.timeline[{n}]', it)}</li>")
+        o(d + 1, '</ol>')
+        if tl.get("after"):
+            render_inset(o, d + 1, where, tl["after"], by)
     if "cta" in sec:
         cta = sec["cta"]
         only(f"{where}.cta", cta, {"text", "url"})

@@ -363,7 +363,7 @@ html:not(.mode-innie) [data-mode="innie"],
 .mode-innie .cta:hover { background: #005a30; color: #ffffff; }
 
 /* Summary cards */
-.mode-innie .cards { gap: 1.25rem; }
+.mode-innie .cards { gap: 1.25rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)); }
 .mode-innie .card { border: 1px solid #b1b4b6; border-radius: 0; padding: 0; }
 .mode-innie .card h3 { margin: 0; padding: .75rem 1.25rem; background: #f3f2f1; border-bottom: 1px solid #b1b4b6; }
 .mode-innie .card p { margin: 0; padding: 1rem 1.25rem; font-size: 1.1875rem; }
@@ -386,6 +386,37 @@ html:not(.mode-innie) [data-mode="innie"],
 
 /* Footer */
 .mode-innie .foot { text-align: left; color: #505a5f; font-size: 1rem; border-top: 1px solid #b1b4b6; padding-top: 1.5rem; }
+
+/* Name plate (innie h1, replaces the outie banner): Lumon desk-plate style, system sans only.
+   #0b0c0c on #ffffff 19.8:1; department line #505a5f 7.0:1; teal rules are decorative. */
+.nameplate { margin: 2rem auto 0; max-width: 38rem; padding: 1.5rem 1.25rem 1.25rem; text-align: center;
+  background: #ffffff; border: 2px solid #0b0c0c; box-shadow: inset 0 0 0 6px #ffffff, inset 0 0 0 8px #00707a; }
+.nameplate-name { margin: 0; font-family: var(--sans); font-size: clamp(2.5rem, 9vw, 4.25rem); font-weight: 300;
+  letter-spacing: .12em; line-height: 1.05; color: #0b0c0c; padding-left: .12em; }
+.nameplate-dept { margin: .9rem 0 0 !important; padding-top: .75rem; border-top: 1px solid #b1b4b6; font-family: var(--sans);
+  font-size: .875rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: #505a5f; }
+
+/* Kier quotes: an inset with attribution */
+figure.inset { margin-inline: 0; }
+figure.inset blockquote { margin: 0; }
+.inset figcaption { margin-top: .5rem; font-size: 1rem; color: #505a5f; }
+.inset figcaption::before { content: "\2014\00a0" / ""; }
+.mode-innie .experience strong { font-weight: 700; }
+
+/* Orientation images, self-hosted, with visible credits */
+.figures { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); gap: 1.25rem; margin-block: 1.75rem; }
+.figure { margin: 0; }
+.figure img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; border: 1px solid #b1b4b6; }
+.figure figcaption { margin-top: .5rem; font-size: 1rem; color: #0b0c0c; }
+.figure .credit { display: block; margin-top: .25rem; font-size: .875rem; color: #505a5f; }
+
+/* Prior assignments timeline */
+.mode-innie .about h3 { font-size: 1.5rem; margin: 2rem 0 1rem; }
+.timeline { list-style: none; margin: 0 0 0 11px; padding: 0 0 0 1.5rem; border-left: 4px solid #00707a; counter-reset: tl; }
+.timeline li { position: relative; margin: 0 0 .9rem; padding-left: .5rem; counter-increment: tl; }
+.timeline li::before { content: ""; position: absolute; left: calc(-1.5rem - 11px); top: .3em; width: 12px; height: 12px;
+  border-radius: 50%; background: #ffffff; border: 3px solid #00707a; }
+.timeline li:last-child::before { background: #00707a; }
 
 @media (max-width: 40rem) {
   .mode-innie h2 { font-size: 1.6rem; }
