@@ -3,9 +3,9 @@
   "entries": [
     {
       "label": "Listening",
-      "title": "Eleanor Rigby",
-      "by": "The Beatles",
-      "quip": "This week's #TunesDay winner. Not one of my picks. I'm fine about it. Completely fine."
+      "title": "Nuclear War: A Scenario",
+      "by": "Annie Jacobsen (audiobook)",
+      "quip": "Seventy-two minutes to the end of the world. A relaxing commute."
     },
     {
       "label": "Defending",
@@ -21,24 +21,28 @@
     },
     {
       "label": "Reading",
-      "title": "The AWS bill. Twice.",
-      "by": "Amazon Web Services",
-      "quip": "Gripping. Ends on a cliffhanger every month.",
-      "placeholder": true
+      "title": "The Secret of Secrets",
+      "by": "Dan Brown",
+      "quip": "Robert Langdon sprints round another European city solving puzzles a librarian could have Googled. I can't put it down."
     },
     {
       "label": "Watching",
-      "title": "A CloudFront deploy",
-      "by": "InProgress \u2192 Deployed",
-      "quip": "Slow burn. No spoilers, but it gets there in the end.",
-      "placeholder": true
+      "title": "For All Mankind",
+      "by": "Apple TV+",
+      "quip": "Alternate history where the space race never stopped. Still more plausible than my project plans."
     },
     {
       "label": "Playing",
-      "title": "Fantasy American football",
-      "by": "A long-running online league",
-      "quip": "The spreadsheets are winning. I am mostly taking part.",
-      "placeholder": true
+      "title": "Gears of War: E-Day",
+      "by": "Xbox",
+      "quip": "Chainsaw bayonets. The least stressful part of my day."
+    },
+    {
+      "label": "Learning",
+      "title": "Day 7 of the 12 Projects of Codemas",
+      "by": "The Pi Hut Raspberry Pi Pico advent calendar (2022)",
+      "quip": "A twelve-day Christmas calendar from 2022. Currently on day seven. Christmas is a state of mind.",
+      "url": "https://thepihut.com/products/maker-advent-calendar-includes-raspberry-pi-pico-h"
     },
     {
       "label": "Building",
@@ -48,13 +52,13 @@
     },
     {
       "label": "Avoiding",
-      "title": "My inbox",
-      "quip": "It knows what it did."
+      "title": "People",
+      "quip": "Nothing personal. Unless it's you."
     },
     {
       "label": "Arguing about",
-      "title": "Whether a 2026 release counts as a year ending in six",
-      "quip": "It does. I will not be taking questions."
+      "title": "The impacts of AI",
+      "quip": "Mostly with the AI. It's winning."
     },
     {
       "label": "KB-AI says",

@@ -6,9 +6,11 @@ Usage:
   python3 build.py --stamp    set now.json "updated" to today, then rebuild
   python3 build.py --check    exit 1 if index.html is out of date (changes nothing)
 
-now.json entries: {"label", "title", "by"?, "quip"?, "placeholder"?} or
+now.json entries: {"label", "title", "by"?, "quip"?, "url"?, "placeholder"?} or
 {"label", "rotate": [one-liners]}. A "rotate" entry is rendered with one line
 chosen by ISO week, and js/site.js picks a random one on each page load.
+An optional "url" (absolute https:// only) turns the title into a link that
+opens in the same tab with rel="noopener".
 The page is fully readable without JavaScript. Standard library only.
 """
 import datetime
@@ -16,6 +18,7 @@ import html
 import json
 import pathlib
 import sys
+import urllib.parse
 
 HERE = pathlib.Path(__file__).resolve().parent
 DATA = HERE / "now.json"
@@ -32,6 +35,24 @@ def fail(msg):
     sys.exit(f"build.py: {msg}")
 
 
+CARD_KEYS = {"label", "title", "by", "quip", "url", "placeholder"}
+ROTATE_KEYS = {"label", "rotate"}
+
+
+def check_url(where, url):
+    """Return url if it is a plain absolute https:// link, else stop the build."""
+    if not isinstance(url, str) or not url.strip():
+        fail(f'{where}: "url" must be a non-empty string')
+    if url != url.strip() or any(c.isspace() or ord(c) < 32 or ord(c) == 127 for c in url):
+        fail(f'{where}: "url" must not contain spaces or control characters')
+    parts = urllib.parse.urlsplit(url)
+    if parts.scheme != "https" or not parts.hostname:
+        fail(f'{where}: "url" must be an absolute https:// link, got {url!r}')
+    if parts.username or parts.password:
+        fail(f'{where}: "url" must not contain credentials')
+    return url
+
+
 def render(data):
     try:
         updated = datetime.date.fromisoformat(data["updated"])
@@ -46,6 +67,11 @@ def render(data):
     for n, e in enumerate(entries, 1):
         if not e.get("label"):
             fail(f"entry {n} has no label")
+        where = f'entry {n} ({e["label"]})'
+        allowed = ROTATE_KEYS if "rotate" in e else CARD_KEYS
+        unknown = sorted(set(e) - allowed)
+        if unknown:
+            fail(f'{where}: unknown field(s) {", ".join(unknown)}')
         out.append('  <div class="now-item">')
         out.append(f'    <dt>{esc(e["label"])}</dt>')
         if "rotate" in e:
@@ -58,7 +84,11 @@ def render(data):
         else:
             if not e.get("title"):
                 fail(f'entry {n} ({e["label"]}) has no title')
-            out.append(f'    <dd class="now-title">{esc(e["title"])}</dd>')
+            title = esc(e["title"])
+            if "url" in e:
+                href = esc(check_url(where, e["url"]))
+                title = f'<a href="{href}" rel="noopener">{title}</a>'
+            out.append(f'    <dd class="now-title">{title}</dd>')
             if e.get("by"):
                 out.append(f'    <dd class="now-by">{esc(e["by"])}</dd>')
             if e.get("quip"):
