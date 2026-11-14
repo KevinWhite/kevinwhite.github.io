@@ -1,0 +1,334 @@
+/* ClubPit homepage. Two themes: [data-theme="terminal"] (default) and [data-theme="neon"].
+   No external fonts; system stacks only. All text colours checked for WCAG 2.2 AA on their backgrounds. */
+
+:root {
+  --mono: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --radius: 26px;
+  --maxw: 60rem;
+}
+
+/* ---------- Terminal (green on black) ---------- */
+[data-theme="terminal"] {
+  --bg: #000000;
+  --panel: #050d07;
+  --text: #33ff66;
+  --muted: #2bd957;
+  --head: #7dff9e;
+  --link: #9dffb5;
+  --accent: #ffb000;
+  --border: #1d7a3a;
+  --focus: #ffb000;
+  --btn-bg: #000000;
+  --btn-on-bg: #33ff66;
+  --btn-on-text: #000000;
+  --font: var(--mono);
+  --head-font: var(--mono);
+  --glow: 0 0 6px rgba(51, 255, 102, .45);
+  --banner-shadow: 0 0 0 2px #1d7a3a, 0 0 24px rgba(51, 255, 102, .25);
+  color-scheme: dark;
+}
+
+/* ---------- Neon (retro 80s) ---------- */
+[data-theme="neon"] {
+  --bg: #12041f;
+  --panel: rgba(30, 8, 52, .88);
+  --text: #f3e8ff;
+  --muted: #d2bdf0;
+  --head: #3ff0ff;
+  --link: #ff7ad9;
+  --accent: #ffd23f;
+  --border: #ff4fd8;
+  --focus: #ffd23f;
+  --btn-bg: #1e0834;
+  --btn-on-bg: #ff4fd8;
+  --btn-on-text: #12041f;
+  --font: var(--sans);
+  --head-font: var(--sans);
+  --glow: 0 0 8px rgba(63, 240, 255, .7), 0 0 18px rgba(255, 79, 216, .45);
+  --banner-shadow: 0 0 0 2px #ff4fd8, 0 0 28px rgba(255, 79, 216, .55), 0 0 60px rgba(63, 240, 255, .3);
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { background: var(--bg); }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  -webkit-text-size-adjust: 100%;
+  position: relative;
+  isolation: isolate; /* so the decorative ::before backdrop sits above body's background */
+}
+
+/* Neon backdrop: sunset glow + perspective grid (decorative, fixed behind content). */
+[data-theme="neon"] body {
+  background:
+    radial-gradient(ellipse 80% 40% at 50% 62%, rgba(255, 79, 216, .28), transparent 70%),
+    linear-gradient(#12041f 0%, #1c0533 55%, #12041f 100%);
+  background-attachment: fixed;
+}
+[data-theme="neon"] body::before {
+  content: "";
+  position: fixed;
+  left: -50%;
+  right: -50%;
+  bottom: 0;
+  height: 48vh;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 79, 216, .55) 2px, transparent 2px),
+    linear-gradient(90deg, rgba(63, 240, 255, .45) 2px, transparent 2px);
+  background-size: 60px 60px;
+  transform: perspective(320px) rotateX(62deg);
+  transform-origin: bottom center;
+  -webkit-mask-image: linear-gradient(transparent, #000 40%);
+  mask-image: linear-gradient(transparent, #000 40%);
+  animation: grid-roll 3s linear infinite;
+}
+@keyframes grid-roll { to { background-position: 0 60px, 0 60px; } }
+
+/* Terminal backdrop: faint scanlines. */
+[data-theme="terminal"] body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: repeating-linear-gradient(rgba(51, 255, 102, .04) 0 1px, transparent 1px 3px);
+}
+
+/* ---------- Accessibility helpers ---------- */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0);
+  white-space: nowrap; border: 0;
+}
+.skip {
+  position: absolute;
+  left: 1rem; top: -4rem;
+  z-index: 10;
+  padding: .6rem 1rem;
+  background: var(--accent);
+  color: #000;
+  font-weight: 700;
+  text-decoration: none;
+}
+.skip:focus { top: 1rem; }
+
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+main:focus { outline: none; }
+
+/* ---------- Layout ---------- */
+.top, main, .foot {
+  width: min(100% - 2rem, var(--maxw));
+  margin-inline: auto;
+}
+
+.bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .75rem;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 1rem;
+}
+.host { margin: 0; font-family: var(--mono); color: var(--muted); }
+
+.theme-switch { display: inline-flex; border: 2px solid var(--border); border-radius: 999px; overflow: hidden; }
+.theme-switch button {
+  font: inherit;
+  font-size: .9375rem;
+  min-height: 44px;
+  padding: .4rem 1rem;
+  border: 0;
+  background: var(--btn-bg);
+  color: var(--text);
+  cursor: pointer;
+}
+.theme-switch button[aria-pressed="true"] {
+  background: var(--btn-on-bg);
+  color: var(--btn-on-text);
+  font-weight: 700;
+}
+.theme-switch button:focus-visible { outline-offset: -5px; outline-color: var(--accent); }
+[data-theme="terminal"] .theme-switch button[aria-pressed="true"]:focus-visible { outline-color: #000; }
+[data-theme="neon"] .theme-switch button[aria-pressed="true"]:focus-visible { outline-color: #12041f; }
+
+/* ---------- Banner ---------- */
+.banner { text-align: center; margin-block: .5rem 0; line-height: 0; }
+.banner-video, .banner-still {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  box-shadow: var(--banner-shadow);
+  background: transparent;
+}
+.banner-still { display: none; }
+.banner-static .banner-video { display: none; }
+.banner-static .banner-still { display: inline-block; }
+
+.banner-controls { text-align: center; margin: .75rem 0 0; min-height: 44px; }
+.banner-btn, .cta {
+  font: inherit;
+  font-size: .9375rem;
+  min-height: 44px;
+  padding: .5rem 1.1rem;
+  border: 2px solid var(--border);
+  border-radius: 999px;
+  background: var(--btn-bg);
+  color: var(--text);
+  cursor: pointer;
+}
+.banner-btn:hover, .theme-switch button:hover { text-decoration: underline; }
+
+/* ---------- Content ---------- */
+main { padding-block: 1.5rem 1rem; }
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.25rem 1.5rem;
+  margin-block: 0 1.5rem;
+}
+[data-theme="neon"] .panel { box-shadow: 0 0 18px rgba(255, 79, 216, .18); }
+
+h2, h3 { font-family: var(--head-font); color: var(--head); line-height: 1.25; }
+h2 { font-size: 1.5rem; margin: 0 0 .75rem; text-shadow: var(--glow); }
+h3 { font-size: 1.125rem; margin: 0 0 .4rem; }
+[data-theme="neon"] h2 { text-transform: uppercase; letter-spacing: .06em; font-style: italic; }
+
+.prompt { color: var(--accent); }
+.t-neon { display: none; }
+[data-theme="neon"] .t-term { display: none; }
+[data-theme="neon"] .t-neon { display: inline; }
+
+p { margin: 0 0 .9rem; }
+p:last-child { margin-bottom: 0; }
+.lede { font-size: 1.125rem; }
+.small { font-size: .9375rem; color: var(--muted); }
+
+a { color: var(--link); text-underline-offset: .2em; }
+a:hover { color: var(--accent); }
+
+.feature { border-width: 2px; border-color: var(--accent); }
+.cta-wrap { margin-block: 1.25rem; }
+.cta {
+  display: inline-block;
+  font-size: 1.125rem;
+  font-weight: 700;
+  text-decoration: none;
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #000;
+  padding: .7rem 1.4rem;
+}
+.cta:hover { color: #000; text-decoration: underline; }
+[data-theme="neon"] .cta { box-shadow: 0 0 16px rgba(255, 210, 63, .55); }
+
+.cards {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr));
+  gap: 1rem;
+}
+.card {
+  border: 1px dashed var(--border);
+  border-radius: 10px;
+  padding: 1rem;
+}
+.card p { font-size: .975rem; }
+
+/* "Currently" list, generated from now.json by build.py. */
+.now {
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 17rem), 1fr));
+  gap: 1rem;
+}
+.now-item {
+  border: 1px dashed var(--border);
+  border-radius: 10px;
+  padding: .85rem 1rem;
+}
+.now dt {
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: .875rem;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+.now dd { margin: 0; }
+.now-title { color: var(--head); font-weight: 700; line-height: 1.35; margin-top: .2rem !important; overflow-wrap: break-word; }
+/* Optional "url" in now.json: the title becomes a link. Underlined so it is not signalled by colour alone;
+   --link on the card background is 16:1 (Terminal) and 7:1+ (Neon), hover --accent 10:1+. */
+.now-title a { color: var(--link); text-decoration-thickness: 1px; text-underline-offset: .2em; }
+.now-title a:hover { color: var(--accent); text-decoration-thickness: 2px; }
+.now-by { color: var(--muted); font-size: .9375rem; }
+.now-quip { font-size: .9375rem; margin-top: .35rem !important; font-style: italic; }
+.now-stamp { margin-top: 1rem; }
+
+.links { margin: 0; padding-left: 1.25rem; }
+.links li { margin-block: .3rem; }
+
+/* Clearly marked placeholders for Kevin to fill in. */
+.placeholder {
+  display: inline-block;
+  padding: 0 .4rem;
+  border: 2px dashed var(--accent);
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: .875rem;
+}
+
+/* ---------- Footer ---------- */
+.foot {
+  padding-block: 1rem 2.5rem;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: .9375rem;
+  text-align: center;
+}
+.foot p { margin-block: .35rem; }
+[data-theme="neon"] .foot { background: rgba(18, 4, 31, .9); }
+.cursor-line { font-family: var(--mono); color: var(--text); }
+.cursor {
+  display: inline-block;
+  width: .6em; height: 1.1em;
+  vertical-align: text-bottom;
+  background: currentColor;
+  animation: blink 1.1s steps(1) infinite;
+}
+@keyframes blink { 50% { opacity: 0; } }
+
+/* ---------- Small screens ---------- */
+@media (max-width: 34rem) {
+  body { font-size: 1rem; }
+  .panel { padding: 1rem; }
+  .bar { justify-content: center; }
+  .cta { font-size: 1rem; padding: .7rem 1.1rem; }
+  .cta span { white-space: nowrap; }
+}
+
+/* ---------- Reduced motion: still logo, no grid roll, no blinking ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .banner-video { display: none; }
+  .banner-still { display: inline-block; }
+  .banner-controls { display: none; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}

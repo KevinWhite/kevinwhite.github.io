@@ -1,0 +1,55 @@
+{
+  "updated": "2026-11-14",
+  "entries": [
+    {
+      "label": "Listening",
+      "title": "Nuclear War: A Scenario",
+      "by": "Annie Jacobsen (audiobook)",
+      "quip": "Seventy-two minutes to the end of the world. A relaxing commute."
+    },
+    {
+      "label": "Reading",
+      "title": "The Secret of Secrets",
+      "by": "Dan Brown",
+      "quip": "Robert Langdon sprints round another European city solving puzzles a librarian could have Googled. I can't put it down."
+    },
+    {
+      "label": "Watching",
+      "title": "For All Mankind",
+      "by": "Apple TV+",
+      "quip": "Alternate history where the space race never stopped. Still more plausible than my project plans."
+    },
+    {
+      "label": "Playing",
+      "title": "Gears of War: E-Day",
+      "by": "Xbox",
+      "quip": "Chainsaw bayonets. The least stressful part of my day."
+    },
+    {
+      "label": "Learning",
+      "title": "Day 7 of the 12 Projects of Codemas",
+      "by": "The Pi Hut Raspberry Pi Pico advent calendar (2022)",
+      "quip": "A twelve-day Christmas calendar from 2022. Currently on day seven. Christmas is a state of mind.",
+      "url": "https://thepihut.com/products/maker-advent-calendar-includes-raspberry-pi-pico-h"
+    },
+    {
+      "label": "Building",
+      "title": "A bin-collection chatbot",
+      "quip": "Glamorous."
+    },
+    {
+      "label": "Avoiding",
+      "title": "People",
+      "quip": "Nothing personal. Unless it's you."
+    },
+    {
+      "label": "Arguing about",
+      "title": "The impacts of AI",
+      "quip": "Mostly with the AI. It's winning."
+    },
+    {
+      "label": "KB-AI says",
+      "title": "Every system is temporary. Every workaround is permanent."
+    }
+  ]
+}
