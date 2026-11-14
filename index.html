@@ -1,7 +1,122 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en-GB" data-theme="terminal">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; media-src 'self'; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>ClubPit: Kevin White's corner of the internet</title>
+  <meta name="description" content="Kevin White: engineering manager by day, music obsessive and AI tinkerer by night. Home of the #TunesDay verdict.">
+  <link rel="canonical" href="https://www.clubpit.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="ClubPit">
+  <meta property="og:description" content="Kevin White: music obsessive, AI tinkerer, maker of unnecessary things.">
+  <meta property="og:url" content="https://www.clubpit.com/">
+  <meta property="og:image" content="https://www.clubpit.com/assets/clubpit-final.png">
+  <meta property="og:image:width" content="622">
+  <meta property="og:image:height" content="218">
+  <meta property="og:image:alt" content="The ClubPit logo in gleaming chrome letters on cartoon ground under a blue sky">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#000000">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/site.css">
+  <script src="/js/theme.js"></script>
+  <script src="/js/site.js" defer></script>
+</head>
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="top">
+    <div class="bar">
+      <p class="host" aria-hidden="true">kevin@clubpit:~</p>
+      <div class="theme-switch" role="group" aria-label="Colour theme">
+        <button type="button" data-theme-choice="terminal" aria-pressed="true">Terminal</button>
+        <button type="button" data-theme-choice="neon" aria-pressed="false">Neon</button>
+      </div>
+    </div>
+
+    <h1 class="visually-hidden">ClubPit</h1>
+    <div class="banner">
+      <video class="banner-video" src="/assets/clubpit.mp4" poster="/assets/clubpit-final.png"
+             width="622" height="218" autoplay muted playsinline preload="auto"
+             aria-label="ClubPit logo animation: the stone words Club and Pit collide, crumble to rubble, then rebuild themselves in chrome">
+        <img src="/assets/clubpit-final.png" width="622" height="218" alt="ClubPit logo in chrome letters">
+      </video>
+      <img class="banner-still" src="/assets/clubpit-final.png" width="622" height="218" alt="ClubPit logo in chrome letters">
+    </div>
+    <p class="banner-controls"><button type="button" class="banner-btn" hidden>Pause animation</button></p>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <section class="panel about" aria-labelledby="about-h">
+      <h2 id="about-h"><span class="t-term"><span class="prompt" aria-hidden="true">$ </span>whoami</span><span class="t-neon">About</span></h2>
+      <p class="lede">Kevin White. By day, a Software Engineering Manager in local government digital, where the
+        work is making public services less annoying to use. By night, much the same thing, only for
+        problems nobody asked me to solve.</p>
+      <p>I build a lot with AI. My assistant, <strong>KB-AI</strong>, writes most of the code, all of the PDFs
+        and, frankly, the better half of my jokes. I mostly supply the opinions and the typos.</p>
+    </section>
+
+    <section class="panel feature" aria-labelledby="tunes-h">
+      <h2 id="tunes-h"><span class="t-term"><span class="prompt" aria-hidden="true">$ </span>cat tunesday.txt</span><span class="t-neon">#TunesDay</span></h2>
+      <p>Every week a group of friends picks songs to a theme. Every week an AI marks them, without mercy
+        and with footnotes. Past winners include the Beatles. Past losers include basic arithmetic.</p>
+      <p class="cta-wrap"><a class="cta" href="https://tunesday.clubpit.com/">This week's <span>#TunesDay verdict&nbsp;&rarr;</span></a></p>
+      <p class="small">My own picks once won the <em>Copied the AI's Homework</em> award. I stand by them. Nobody else does.</p>
+    </section>
+
+    <section class="panel" aria-labelledby="make-h">
+      <h2 id="make-h"><span class="t-term"><span class="prompt" aria-hidden="true">$ </span>ls ~/things-i-make</span><span class="t-neon">Things I make</span></h2>
+      <ul class="cards">
+        <li class="card">
+          <h3><a href="https://tunesday.clubpit.com/">#TunesDay reviews</a></h3>
+          <p>The weekly snarky review site. Grades, awards, and the occasional pointed remark about release dates.</p>
+        </li>
+        <li class="card">
+          <h3>That logo up there</h3>
+          <p>Generated frame by frame in Python. Stone collides, stone crumbles, stone becomes chrome. Took
+            longer than it should. Plays once, because some of us have taste.</p>
+        </li>
+        <li class="card">
+          <h3>AI experiments</h3>
+          <p>KB-AI: an assistant that reads, writes, emails and occasionally gets corrected. Most of what's on this page
+            started as "can it do that?" and ended as "why did I let it do that?"</p>
+        </li>
+        <li class="card">
+          <h3>Fantasy football analytics</h3>
+          <p>Scouting reports, gameplans and a weekly fanzine for a long-running online fantasy American football
+            league. More spreadsheets than any hobby needs. The analytics are excellent. The win record is
+            a separate matter.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="panel" aria-labelledby="now-h">
+      <h2 id="now-h"><span class="t-term"><span class="prompt" aria-hidden="true">$ </span>now-playing</span><span class="t-neon">Now playing</span></h2>
+      <dl class="now">
+        <dt>On repeat</dt>
+        <dd><span class="placeholder">PLACEHOLDER: Kevin to add a song and artist</span></dd>
+        <dt>Current obsession</dt>
+        <dd><span class="placeholder">PLACEHOLDER: Kevin to add one line</span></dd>
+        <dt>Building</dt>
+        <dd>This page, apparently.</dd>
+      </dl>
+    </section>
+
+    <section class="panel" aria-labelledby="links-h">
+      <h2 id="links-h"><span class="t-term"><span class="prompt" aria-hidden="true">$ </span>links</span><span class="t-neon">Links</span></h2>
+      <ul class="links">
+        <li><a href="https://tunesday.clubpit.com/">#TunesDay</a>: the weekly verdict</li>
+        <li><a href="https://github.com/KevinWhite">GitHub</a>: KevinWhite</li>
+        <li><span class="placeholder">PLACEHOLDER: any other links (or delete this line)</span></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <p>No cookies. No tracking. No analytics. Nobody is counting, least of all me.</p>
+    <p>Built by KB-AI, approved eventually by Kevin. Hand-coded HTML, like it's 1999 but with better contrast.</p>
+    <p class="cursor-line"><span aria-hidden="true">kevin@clubpit:~$ </span><span class="cursor" aria-hidden="true"></span></p>
+  </footer>
 </body>
 </html>
