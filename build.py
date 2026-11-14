@@ -31,8 +31,10 @@ now.json:
 Text fields accept three bits of inline markup: **bold**, *italic* and [link text](url).
 URLs: absolute https:// everywhere; card, CTA and inline links may also be site paths such as /assets/x.mp4.
 Anything marked "placeholder": true is listed after each build. Standard library only.
+Every local /css, /js and /assets src/href/poster in index.html gets ?v=<sha256[:10]> (cache-busting).
 """
 import datetime
+import hashlib
 import html
 import json
 import pathlib
@@ -373,6 +375,21 @@ def splice(page, regions):
     return page
 
 
+# Cache-busting: GitHub Pages serves everything with max-age=600, so a fresh index.html could load a stale
+# site.css/js. Every local /css, /js and /assets reference gets ?v=<first 10 hex of the file's sha256>.
+# Recomputed on every build (and by --check), so editing an asset without rebuilding fails the check.
+ASSET_RE = re.compile(r'\b(src|href|poster)="(/(?:css|js|assets)/[^"?#]+)(?:\?v=[0-9a-f]+)?"')
+
+
+def bust(page):
+    def repl(m):
+        f = HERE / m.group(2).lstrip("/")
+        if not f.is_file():
+            fail(f"index.html references {m.group(2)}, which does not exist")
+        return f'{m.group(1)}="{m.group(2)}?v={hashlib.sha256(f.read_bytes()).hexdigest()[:10]}"'
+    return ASSET_RE.sub(repl, page)
+
+
 def main(argv):
     try:
         data = json.loads(DATA.read_text(encoding="utf-8"))
@@ -383,7 +400,7 @@ def main(argv):
         DATA.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
     page = PAGE.read_text(encoding="utf-8")
-    new = splice(page, render(data))
+    new = bust(splice(page, render(data)))
 
     labels = {m: [e["label"] for e in data[m]["entries"]] for m in MODES}
     if len(labels["outie"]) != len(labels["innie"]):
