@@ -281,7 +281,6 @@ a:hover { color: var(--accent); }
 .now-title a:hover { color: var(--accent); text-decoration-thickness: 2px; }
 .now-by { color: var(--muted); font-size: .9375rem; }
 .now-quip { font-size: .9375rem; margin-top: .35rem !important; font-style: italic; }
-.now .rotate { quotes: "\201C" "\201D"; }
 .now-stamp { margin-top: 1rem; }
 
 .links { margin: 0; padding-left: 1.25rem; }

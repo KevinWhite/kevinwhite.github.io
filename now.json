@@ -8,18 +8,6 @@
       "quip": "Seventy-two minutes to the end of the world. A relaxing commute."
     },
     {
-      "label": "Defending",
-      "title": "There Is a Light That Never Goes Out / Sledgehammer",
-      "by": "The Smiths / Peter Gabriel",
-      "quip": "My #TunesDay picks this week. I would pick them again. I would pick them every week."
-    },
-    {
-      "label": "Hoarding",
-      "title": "1,117 liked songs",
-      "by": "Spotify",
-      "quip": "Shuffle still manages to find the one I skip."
-    },
-    {
       "label": "Reading",
       "title": "The Secret of Secrets",
       "by": "Dan Brown",
@@ -62,18 +50,7 @@
     },
     {
       "label": "KB-AI says",
-      "rotate": [
-        "I wrote this line. He approved it. Eventually.",
-        "Works on my machine. I don't have a machine.",
-        "Have you tried switching it to Neon and back again?",
-        "That's not a bug. That's a #TunesDay footnote.",
-        "Please stop asking me to make it more neon.",
-        "I don't make the #TunesDay rules. I just footnote them."
-      ]
-    },
-    {
-      "label": "Status",
-      "title": "Signed in to the wrong AWS account. Again."
+      "title": "Every system is temporary. Every workaround is permanent."
     }
   ]
 }

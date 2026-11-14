@@ -6,10 +6,9 @@ Usage:
   python3 build.py --stamp    set now.json "updated" to today, then rebuild
   python3 build.py --check    exit 1 if index.html is out of date (changes nothing)
 
-now.json entries: {"label", "title", "by"?, "quip"?, "url"?, "placeholder"?} or
-{"label", "rotate": [one-liners]}. A "rotate" entry is rendered with one line
-chosen by ISO week, and js/site.js picks a random one on each page load.
-An optional "url" (absolute https:// only) turns the title into a link that
+now.json entries: {"label", "title", "by"?, "quip"?, "url"?, "placeholder"?}.
+"KB-AI says" is an ordinary card: its one-liner is the "title", replaced by hand
+each time the site is updated. An optional "url" (absolute https:// only) turns the title into a link that
 opens in the same tab with rel="noopener".
 The page is fully readable without JavaScript. Standard library only.
 """
@@ -36,7 +35,6 @@ def fail(msg):
 
 
 CARD_KEYS = {"label", "title", "by", "quip", "url", "placeholder"}
-ROTATE_KEYS = {"label", "rotate"}
 
 
 def check_url(where, url):
@@ -62,37 +60,27 @@ def render(data):
     if not entries:
         fail('now.json needs a non-empty "entries" list')
 
-    week = updated.isocalendar()[1]
     out = ['<dl class="now">']
     for n, e in enumerate(entries, 1):
         if not e.get("label"):
             fail(f"entry {n} has no label")
         where = f'entry {n} ({e["label"]})'
-        allowed = ROTATE_KEYS if "rotate" in e else CARD_KEYS
-        unknown = sorted(set(e) - allowed)
+        unknown = sorted(set(e) - CARD_KEYS)
         if unknown:
             fail(f'{where}: unknown field(s) {", ".join(unknown)}')
         out.append('  <div class="now-item">')
         out.append(f'    <dt>{esc(e["label"])}</dt>')
-        if "rotate" in e:
-            lines = [str(x) for x in e["rotate"] if str(x).strip()]
-            if not lines:
-                fail(f'entry {n} ({e["label"]}): "rotate" is empty')
-            pick = lines[week % len(lines)]
-            data_attr = esc(json.dumps(lines, ensure_ascii=False))
-            out.append(f'    <dd class="now-title"><q class="rotate" data-rotate="{data_attr}">{esc(pick)}</q></dd>')
-        else:
-            if not e.get("title"):
-                fail(f'entry {n} ({e["label"]}) has no title')
-            title = esc(e["title"])
-            if "url" in e:
-                href = esc(check_url(where, e["url"]))
-                title = f'<a href="{href}" rel="noopener">{title}</a>'
-            out.append(f'    <dd class="now-title">{title}</dd>')
-            if e.get("by"):
-                out.append(f'    <dd class="now-by">{esc(e["by"])}</dd>')
-            if e.get("quip"):
-                out.append(f'    <dd class="now-quip">{esc(e["quip"])}</dd>')
+        if not e.get("title"):
+            fail(f"{where} has no title")
+        title = esc(e["title"])
+        if "url" in e:
+            href = esc(check_url(where, e["url"]))
+            title = f'<a href="{href}" rel="noopener">{title}</a>'
+        out.append(f'    <dd class="now-title">{title}</dd>')
+        if e.get("by"):
+            out.append(f'    <dd class="now-by">{esc(e["by"])}</dd>')
+        if e.get("quip"):
+            out.append(f'    <dd class="now-quip">{esc(e["quip"])}</dd>')
         out.append('  </div>')
     out.append('</dl>')
     long_date = f"{updated.day} {updated:%B %Y}"
