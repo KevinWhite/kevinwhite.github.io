@@ -1,59 +1,242 @@
 {
   "updated": "2026-11-14",
-  "entries": [
-    {
-      "label": "Listening",
-      "title": "Nuclear War: A Scenario",
-      "by": "Annie Jacobsen (audiobook)",
-      "quip": "Seventy-two minutes to the end of the world. A relaxing commute.",
-      "url": "https://en.wikipedia.org/wiki/Nuclear_War:_A_Scenario"
+  "outie": {
+    "host": "kevin@clubpit:~",
+    "notice": "Your innie has been working hard. You wouldn't know.",
+    "prompt": "$ ",
+    "sections": {
+      "about": {
+        "heading": "whoami",
+        "paragraphs": [
+          "Kevin White. By day, a Software Engineering Manager in local government digital, where the work is making public services less annoying to use. By night, much the same thing, only for problems nobody asked me to solve.",
+          "I build a lot with AI. My assistant, **KB-AI**, writes most of the code, all of the PDFs and, frankly, the better half of my jokes. I mostly supply the opinions and the typos."
+        ]
+      },
+      "tunes": {
+        "heading": "cat tunesday.txt",
+        "paragraphs": [
+          "Every week a group of friends picks songs to a theme. Every week an AI marks them, without mercy and with footnotes. Past winners include the Beatles. Past losers include basic arithmetic."
+        ],
+        "cta": {
+          "text": "This week's #TunesDay verdict",
+          "url": "https://tunesday.clubpit.com/"
+        },
+        "note": "My own picks once won the *Copied the AI's Homework* award. I stand by them. Nobody else does."
+      },
+      "make": {
+        "heading": "ls ~/things-i-make",
+        "cards": [
+          {
+            "title": "#TunesDay reviews",
+            "url": "https://tunesday.clubpit.com/",
+            "text": "The weekly snarky review site. Grades, awards, and the occasional pointed remark about release dates."
+          },
+          {
+            "title": "That logo up there",
+            "url": "/assets/clubpit.mp4",
+            "text": "Generated frame by frame in Python. Stone collides, stone crumbles, stone becomes chrome. Took longer than it should. Plays once, because some of us have taste."
+          },
+          {
+            "title": "AI experiments",
+            "text": "KB-AI: an assistant that reads, writes, emails and occasionally gets corrected. Most of what's on this page started as \"can it do that?\" and ended as \"why did I let it do that?\""
+          },
+          {
+            "title": "Fantasy football analytics",
+            "text": "Scouting reports, gameplans and a weekly fanzine for a long-running online fantasy American football league. More spreadsheets than any hobby needs. The analytics are excellent. The win record is a separate matter."
+          }
+        ]
+      },
+      "now": {
+        "heading": "cat now.json"
+      },
+      "links": {
+        "heading": "links",
+        "links": [
+          {
+            "text": "#TunesDay",
+            "url": "https://tunesday.clubpit.com/",
+            "note": "the weekly verdict"
+          },
+          {
+            "text": "GitHub",
+            "url": "https://github.com/KevinWhite",
+            "note": "KevinWhite"
+          }
+        ]
+      }
     },
-    {
-      "label": "Reading",
-      "title": "The Secret of Secrets",
-      "by": "Dan Brown",
-      "quip": "Robert Langdon sprints round another European city solving puzzles a librarian could have Googled. I can't put it down.",
-      "url": "https://danbrown.com/"
+    "entries": [
+      {
+        "label": "Listening",
+        "title": "Nuclear War: A Scenario",
+        "by": "Annie Jacobsen (audiobook)",
+        "quip": "Seventy-two minutes to the end of the world. A relaxing commute.",
+        "url": "https://en.wikipedia.org/wiki/Nuclear_War:_A_Scenario"
+      },
+      {
+        "label": "Reading",
+        "title": "The Secret of Secrets",
+        "by": "Dan Brown",
+        "quip": "Robert Langdon sprints round another European city solving puzzles a librarian could have Googled. I can't put it down.",
+        "url": "https://danbrown.com/"
+      },
+      {
+        "label": "Watching",
+        "title": "For All Mankind",
+        "by": "Apple TV+",
+        "quip": "Alternate history where the space race never stopped. Still more plausible than my project plans.",
+        "url": "https://en.wikipedia.org/wiki/For_All_Mankind_(TV_series)"
+      },
+      {
+        "label": "Playing",
+        "title": "Gears of War: E-Day",
+        "by": "Xbox",
+        "quip": "Chainsaw bayonets. The least stressful part of my day.",
+        "url": "https://www.xbox.com/en-GB/games/gears-of-war-eday"
+      },
+      {
+        "label": "Learning",
+        "title": "Day 7 of the 12 Projects of Codemas",
+        "by": "The Pi Hut Raspberry Pi Pico advent calendar (2022)",
+        "quip": "A twelve-day Christmas calendar from 2022. Currently on day seven. Christmas is a state of mind.",
+        "url": "https://thepihut.com/products/maker-advent-calendar-includes-raspberry-pi-pico-h"
+      },
+      {
+        "label": "Building",
+        "title": "A bin-collection chatbot",
+        "quip": "Glamorous."
+      },
+      {
+        "label": "Avoiding",
+        "title": "People",
+        "quip": "Nothing personal. Unless it's you."
+      },
+      {
+        "label": "Arguing about",
+        "title": "The impacts of AI",
+        "quip": "Mostly with the AI. It's winning."
+      },
+      {
+        "label": "KB-AI says",
+        "title": "Every system is temporary. Every workaround is permanent."
+      }
+    ],
+    "footer": [
+      "No cookies. No tracking. No analytics. Nobody is counting, least of all me.",
+      "Built by KB-AI, approved eventually by Kevin. Hand-coded HTML, like it's 1999 but with better contrast."
+    ]
+  },
+  "innie": {
+    "host": "ClubPit · Severed floor",
+    "sections": {
+      "about": {
+        "heading": "Orientation",
+        "placeholder": true,
+        "paragraphs": [
+          "[Awaiting refinement] Your innie's introduction will appear here once it has been approved."
+        ],
+        "inset": "The work is important. The details are severed."
+      },
+      "tunes": {
+        "heading": "Music Dance Experience",
+        "placeholder": true,
+        "paragraphs": [
+          "[Awaiting refinement]"
+        ],
+        "cta": {
+          "text": "This week's #TunesDay verdict",
+          "url": "https://tunesday.clubpit.com/"
+        }
+      },
+      "make": {
+        "heading": "Macrodata Refinement",
+        "cards": [
+          {
+            "title": "[File pending]",
+            "text": "[Awaiting refinement]",
+            "placeholder": true
+          },
+          {
+            "title": "[File pending]",
+            "text": "[Awaiting refinement]",
+            "placeholder": true
+          },
+          {
+            "title": "[File pending]",
+            "text": "[Awaiting refinement]",
+            "placeholder": true
+          }
+        ]
+      },
+      "now": {
+        "heading": "Your innie is currently"
+      },
+      "links": {
+        "heading": "Approved links",
+        "links": [
+          {
+            "text": "#TunesDay",
+            "url": "https://tunesday.clubpit.com/",
+            "note": "the weekly verdict"
+          },
+          {
+            "text": "GitHub",
+            "url": "https://github.com/KevinWhite",
+            "note": "KevinWhite"
+          }
+        ]
+      }
     },
-    {
-      "label": "Watching",
-      "title": "For All Mankind",
-      "by": "Apple TV+",
-      "quip": "Alternate history where the space race never stopped. Still more plausible than my project plans.",
-      "url": "https://en.wikipedia.org/wiki/For_All_Mankind_(TV_series)"
-    },
-    {
-      "label": "Playing",
-      "title": "Gears of War: E-Day",
-      "by": "Xbox",
-      "quip": "Chainsaw bayonets. The least stressful part of my day.",
-      "url": "https://www.xbox.com/en-GB/games/gears-of-war-eday"
-    },
-    {
-      "label": "Learning",
-      "title": "Day 7 of the 12 Projects of Codemas",
-      "by": "The Pi Hut Raspberry Pi Pico advent calendar (2022)",
-      "quip": "A twelve-day Christmas calendar from 2022. Currently on day seven. Christmas is a state of mind.",
-      "url": "https://thepihut.com/products/maker-advent-calendar-includes-raspberry-pi-pico-h"
-    },
-    {
-      "label": "Building",
-      "title": "A bin-collection chatbot",
-      "quip": "Glamorous."
-    },
-    {
-      "label": "Avoiding",
-      "title": "People",
-      "quip": "Nothing personal. Unless it's you."
-    },
-    {
-      "label": "Arguing about",
-      "title": "The impacts of AI",
-      "quip": "Mostly with the AI. It's winning."
-    },
-    {
-      "label": "KB-AI says",
-      "title": "Every system is temporary. Every workaround is permanent."
-    }
-  ]
+    "entries": [
+      {
+        "label": "Listening",
+        "title": "[Awaiting refinement]",
+        "placeholder": true
+      },
+      {
+        "label": "Reading",
+        "title": "[Awaiting refinement]",
+        "placeholder": true
+      },
+      {
+        "label": "Watching",
+        "title": "[Awaiting refinement]",
+        "placeholder": true
+      },
+      {
+        "label": "Playing",
+        "title": "[Awaiting refinement]",
+        "placeholder": true
+      },
+      {
+        "label": "Learning",
+        "title": "[Awaiting refinement]",
+        "placeholder": true
+      },
+      {
+        "label": "Building",
+        "title": "[Awaiting refinement]",
+        "placeholder": true
+      },
+      {
+        "label": "Avoiding",
+        "title": "[Awaiting refinement]",
+        "placeholder": true
+      },
+      {
+        "label": "Arguing about",
+        "title": "[Awaiting refinement]",
+        "placeholder": true
+      },
+      {
+        "label": "Kier says",
+        "title": "[Awaiting refinement]",
+        "placeholder": true
+      }
+    ],
+    "footer": [
+      "Please enjoy each card equally.",
+      "No cookies. No tracking. No analytics."
+    ]
+  }
 }

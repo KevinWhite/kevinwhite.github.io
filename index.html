@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en-GB" data-theme="terminal">
+<html lang="en-GB">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,149 +20,250 @@
   <meta name="theme-color" content="#000000">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/css/site.css">
-  <script src="/js/theme.js"></script>
+  <script src="/js/mode.js"></script>
   <script src="/js/site.js" defer></script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
 
   <header class="top">
-    <div class="bar">
-      <p class="host" aria-hidden="true">kevin@clubpit:~</p>
-      <div class="theme-switch" role="group" aria-label="Colour theme">
-        <button type="button" data-theme-choice="terminal" aria-pressed="true">Terminal</button>
-        <button type="button" data-theme-choice="neon" aria-pressed="false">Neon</button>
+    <div class="bar-wrap">
+      <div class="bar">
+        <p class="host" aria-hidden="true">
+        <!-- build:host -->
+        <span data-mode="outie">kevin@clubpit:~</span>
+        <span data-mode="innie">ClubPit · Severed floor</span>
+        <!-- /build:host -->
+        </p>
+        <div class="mode-switch" role="group" aria-labelledby="mode-switch-label">
+          <span class="mode-switch-label" id="mode-switch-label"><span data-mode="outie">Take the elevator</span><span data-mode="innie"><span class="sign-floor">Severed floor</span><span class="sign-sep"> &middot; </span><span class="sign-floor">Elevator</span></span></span>
+          <button type="button" data-mode-choice="outie" aria-pressed="true">Outie</button>
+          <button type="button" data-mode-choice="innie" aria-pressed="false">Innie</button>
+        </div>
       </div>
     </div>
+    <div class="accent-bar" aria-hidden="true"></div>
+    <p class="visually-hidden" role="status" id="mode-status"></p>
 
-    <h1 class="visually-hidden">ClubPit</h1>
-    <div class="banner">
-      <video class="banner-video" src="/assets/clubpit.mp4" poster="/assets/clubpit-final.png"
-             width="622" height="218" autoplay muted playsinline preload="auto"
-             aria-label="ClubPit logo animation: the stone words Club and Pit collide, crumble to rubble, then rebuild themselves in chrome">
-        <img src="/assets/clubpit-final.png" width="622" height="218" alt="ClubPit logo in chrome letters">
-      </video>
-      <img class="banner-still" src="/assets/clubpit-final.png" width="622" height="218" alt="ClubPit logo in chrome letters">
+    <div class="notices">
+      <!-- build:notice -->
+      <div class="notice" data-mode="outie">
+        <p class="notice-line">Your innie has been working hard. You wouldn&#x27;t know.</p>
+      </div>
+      <div class="notice" data-mode="innie">
+        <p class="disclaimer">Personal site. Not an official West Northamptonshire Council or GOV.UK page.</p>
+      </div>
+      <!-- /build:notice -->
     </div>
-    <p class="banner-controls"><button type="button" class="banner-btn" hidden>Pause animation</button></p>
+
+    <div class="top-inner">
+      <h1 class="visually-hidden">ClubPit</h1>
+      <div class="banner">
+        <video class="banner-video" src="/assets/clubpit.mp4" poster="/assets/clubpit-final.png"
+               width="622" height="218" autoplay muted playsinline preload="auto"
+               aria-label="ClubPit logo animation: the stone words Club and Pit collide, crumble to rubble, then rebuild themselves in chrome">
+          <img src="/assets/clubpit-final.png" width="622" height="218" alt="ClubPit logo in chrome letters">
+        </video>
+        <img class="banner-still" src="/assets/clubpit-final.png" width="622" height="218" alt="ClubPit logo in chrome letters">
+      </div>
+      <p class="banner-controls"><button type="button" class="banner-btn" hidden>Pause animation</button></p>
+    </div>
   </header>
 
   <main id="main" tabindex="-1">
-    <section class="panel about" aria-labelledby="about-h">
-      <h2 id="about-h"><span class="t-term"><span class="prompt" aria-hidden="true">$ </span>whoami</span><span class="t-neon">About</span></h2>
-      <p class="lede">Kevin White. By day, a Software Engineering Manager in local government digital, where the
-        work is making public services less annoying to use. By night, much the same thing, only for
-        problems nobody asked me to solve.</p>
-      <p>I build a lot with AI. My assistant, <strong>KB-AI</strong>, writes most of the code, all of the PDFs
-        and, frankly, the better half of my jokes. I mostly supply the opinions and the typos.</p>
-    </section>
-
-    <section class="panel feature" aria-labelledby="tunes-h">
-      <h2 id="tunes-h"><span class="t-term"><span class="prompt" aria-hidden="true">$ </span>cat tunesday.txt</span><span class="t-neon">#TunesDay</span></h2>
-      <p>Every week a group of friends picks songs to a theme. Every week an AI marks them, without mercy
-        and with footnotes. Past winners include the Beatles. Past losers include basic arithmetic.</p>
-      <p class="cta-wrap"><a class="cta" href="https://tunesday.clubpit.com/">This week's <span>#TunesDay verdict&nbsp;&rarr;</span></a></p>
-      <p class="small">My own picks once won the <em>Copied the AI's Homework</em> award. I stand by them. Nobody else does.</p>
-    </section>
-
-    <section class="panel" aria-labelledby="make-h">
-      <h2 id="make-h"><span class="t-term"><span class="prompt" aria-hidden="true">$ </span>ls ~/things-i-make</span><span class="t-neon">Things I make</span></h2>
-      <ul class="cards">
-        <li class="card">
-          <h3><a href="https://tunesday.clubpit.com/">#TunesDay reviews</a></h3>
-          <p>The weekly snarky review site. Grades, awards, and the occasional pointed remark about release dates.</p>
-        </li>
-        <li class="card">
-          <h3><a href="/assets/clubpit.mp4">That logo up there</a></h3>
-          <p>Generated frame by frame in Python. Stone collides, stone crumbles, stone becomes chrome. Took
-            longer than it should. Plays once, because some of us have taste.</p>
-        </li>
-        <li class="card">
-          <h3>AI experiments</h3>
-          <p>KB-AI: an assistant that reads, writes, emails and occasionally gets corrected. Most of what's on this page
-            started as "can it do that?" and ended as "why did I let it do that?"</p>
-        </li>
-        <li class="card">
-          <h3>Fantasy football analytics</h3>
-          <p>Scouting reports, gameplans and a weekly fanzine for a long-running online fantasy American football
-            league. More spreadsheets than any hobby needs. The analytics are excellent. The win record is
-            a separate matter.</p>
-        </li>
-      </ul>
-    </section>
-
-    <section class="panel" aria-labelledby="now-h">
-      <h2 id="now-h"><span class="t-term"><span class="prompt" aria-hidden="true">$ </span>cat now.json</span><span class="t-neon">Currently</span></h2>
-      <!-- Generated from now.json by build.py. Edit now.json, not this block. -->
-      <!-- now:start -->
-      <dl class="now">
-        <div class="now-item">
-          <dt>Listening</dt>
-          <dd class="now-title"><a href="https://en.wikipedia.org/wiki/Nuclear_War:_A_Scenario" rel="noopener">Nuclear War: A Scenario</a></dd>
-          <dd class="now-by">Annie Jacobsen (audiobook)</dd>
-          <dd class="now-quip">Seventy-two minutes to the end of the world. A relaxing commute.</dd>
-        </div>
-        <div class="now-item">
-          <dt>Reading</dt>
-          <dd class="now-title"><a href="https://danbrown.com/" rel="noopener">The Secret of Secrets</a></dd>
-          <dd class="now-by">Dan Brown</dd>
-          <dd class="now-quip">Robert Langdon sprints round another European city solving puzzles a librarian could have Googled. I can&#x27;t put it down.</dd>
-        </div>
-        <div class="now-item">
-          <dt>Watching</dt>
-          <dd class="now-title"><a href="https://en.wikipedia.org/wiki/For_All_Mankind_(TV_series)" rel="noopener">For All Mankind</a></dd>
-          <dd class="now-by">Apple TV+</dd>
-          <dd class="now-quip">Alternate history where the space race never stopped. Still more plausible than my project plans.</dd>
-        </div>
-        <div class="now-item">
-          <dt>Playing</dt>
-          <dd class="now-title"><a href="https://www.xbox.com/en-GB/games/gears-of-war-eday" rel="noopener">Gears of War: E-Day</a></dd>
-          <dd class="now-by">Xbox</dd>
-          <dd class="now-quip">Chainsaw bayonets. The least stressful part of my day.</dd>
-        </div>
-        <div class="now-item">
-          <dt>Learning</dt>
-          <dd class="now-title"><a href="https://thepihut.com/products/maker-advent-calendar-includes-raspberry-pi-pico-h" rel="noopener">Day 7 of the 12 Projects of Codemas</a></dd>
-          <dd class="now-by">The Pi Hut Raspberry Pi Pico advent calendar (2022)</dd>
-          <dd class="now-quip">A twelve-day Christmas calendar from 2022. Currently on day seven. Christmas is a state of mind.</dd>
-        </div>
-        <div class="now-item">
-          <dt>Building</dt>
-          <dd class="now-title">A bin-collection chatbot</dd>
-          <dd class="now-quip">Glamorous.</dd>
-        </div>
-        <div class="now-item">
-          <dt>Avoiding</dt>
-          <dd class="now-title">People</dd>
-          <dd class="now-quip">Nothing personal. Unless it&#x27;s you.</dd>
-        </div>
-        <div class="now-item">
-          <dt>Arguing about</dt>
-          <dd class="now-title">The impacts of AI</dd>
-          <dd class="now-quip">Mostly with the AI. It&#x27;s winning.</dd>
-        </div>
-        <div class="now-item">
-          <dt>KB-AI says</dt>
-          <dd class="now-title">Every system is temporary. Every workaround is permanent.</dd>
-        </div>
-      </dl>
-      <p class="small now-stamp">Updated <time datetime="2026-11-14">14 November 2026</time></p>
-      <!-- now:end -->
-    </section>
-
-    <section class="panel" aria-labelledby="links-h">
-      <h2 id="links-h"><span class="t-term"><span class="prompt" aria-hidden="true">$ </span>links</span><span class="t-neon">Links</span></h2>
-      <ul class="links">
-        <li><a href="https://tunesday.clubpit.com/">#TunesDay</a>: the weekly verdict</li>
-        <li><a href="https://github.com/KevinWhite">GitHub</a>: KevinWhite</li>
-      </ul>
-    </section>
+    <!-- Generated from now.json by build.py (both modes). Edit now.json, not this block. -->
+    <!-- build:main -->
+    <div class="mode-block" data-mode="outie">
+      <section class="panel about" aria-labelledby="about-h-outie">
+        <h2 id="about-h-outie"><span class="prompt" aria-hidden="true">$ </span>whoami</h2>
+        <p class="lede">Kevin White. By day, a Software Engineering Manager in local government digital, where the work is making public services less annoying to use. By night, much the same thing, only for problems nobody asked me to solve.</p>
+        <p>I build a lot with AI. My assistant, <strong>KB-AI</strong>, writes most of the code, all of the PDFs and, frankly, the better half of my jokes. I mostly supply the opinions and the typos.</p>
+      </section>
+      <section class="panel feature" aria-labelledby="tunes-h-outie">
+        <h2 id="tunes-h-outie"><span class="prompt" aria-hidden="true">$ </span>cat tunesday.txt</h2>
+        <p>Every week a group of friends picks songs to a theme. Every week an AI marks them, without mercy and with footnotes. Past winners include the Beatles. Past losers include basic arithmetic.</p>
+        <p class="cta-wrap"><a class="cta" href="https://tunesday.clubpit.com/">This week&#x27;s <span>#TunesDay verdict&nbsp;&rarr;</span></a></p>
+        <p class="small">My own picks once won the <em>Copied the AI&#x27;s Homework</em> award. I stand by them. Nobody else does.</p>
+      </section>
+      <section class="panel" aria-labelledby="make-h-outie">
+        <h2 id="make-h-outie"><span class="prompt" aria-hidden="true">$ </span>ls ~/things-i-make</h2>
+        <ul class="cards">
+          <li class="card">
+            <h3><a href="https://tunesday.clubpit.com/">#TunesDay reviews</a></h3>
+            <p>The weekly snarky review site. Grades, awards, and the occasional pointed remark about release dates.</p>
+          </li>
+          <li class="card">
+            <h3><a href="/assets/clubpit.mp4">That logo up there</a></h3>
+            <p>Generated frame by frame in Python. Stone collides, stone crumbles, stone becomes chrome. Took longer than it should. Plays once, because some of us have taste.</p>
+          </li>
+          <li class="card">
+            <h3>AI experiments</h3>
+            <p>KB-AI: an assistant that reads, writes, emails and occasionally gets corrected. Most of what&#x27;s on this page started as &quot;can it do that?&quot; and ended as &quot;why did I let it do that?&quot;</p>
+          </li>
+          <li class="card">
+            <h3>Fantasy football analytics</h3>
+            <p>Scouting reports, gameplans and a weekly fanzine for a long-running online fantasy American football league. More spreadsheets than any hobby needs. The analytics are excellent. The win record is a separate matter.</p>
+          </li>
+        </ul>
+      </section>
+      <section class="panel" aria-labelledby="now-h-outie">
+        <h2 id="now-h-outie"><span class="prompt" aria-hidden="true">$ </span>cat now.json</h2>
+        <!-- Generated from now.json by build.py. Edit now.json, not this block. -->
+        <dl class="now">
+          <div class="now-item">
+            <dt>Listening</dt>
+            <dd class="now-title"><a href="https://en.wikipedia.org/wiki/Nuclear_War:_A_Scenario" rel="noopener">Nuclear War: A Scenario</a></dd>
+            <dd class="now-by">Annie Jacobsen (audiobook)</dd>
+            <dd class="now-quip">Seventy-two minutes to the end of the world. A relaxing commute.</dd>
+          </div>
+          <div class="now-item">
+            <dt>Reading</dt>
+            <dd class="now-title"><a href="https://danbrown.com/" rel="noopener">The Secret of Secrets</a></dd>
+            <dd class="now-by">Dan Brown</dd>
+            <dd class="now-quip">Robert Langdon sprints round another European city solving puzzles a librarian could have Googled. I can&#x27;t put it down.</dd>
+          </div>
+          <div class="now-item">
+            <dt>Watching</dt>
+            <dd class="now-title"><a href="https://en.wikipedia.org/wiki/For_All_Mankind_(TV_series)" rel="noopener">For All Mankind</a></dd>
+            <dd class="now-by">Apple TV+</dd>
+            <dd class="now-quip">Alternate history where the space race never stopped. Still more plausible than my project plans.</dd>
+          </div>
+          <div class="now-item">
+            <dt>Playing</dt>
+            <dd class="now-title"><a href="https://www.xbox.com/en-GB/games/gears-of-war-eday" rel="noopener">Gears of War: E-Day</a></dd>
+            <dd class="now-by">Xbox</dd>
+            <dd class="now-quip">Chainsaw bayonets. The least stressful part of my day.</dd>
+          </div>
+          <div class="now-item">
+            <dt>Learning</dt>
+            <dd class="now-title"><a href="https://thepihut.com/products/maker-advent-calendar-includes-raspberry-pi-pico-h" rel="noopener">Day 7 of the 12 Projects of Codemas</a></dd>
+            <dd class="now-by">The Pi Hut Raspberry Pi Pico advent calendar (2022)</dd>
+            <dd class="now-quip">A twelve-day Christmas calendar from 2022. Currently on day seven. Christmas is a state of mind.</dd>
+          </div>
+          <div class="now-item">
+            <dt>Building</dt>
+            <dd class="now-title">A bin-collection chatbot</dd>
+            <dd class="now-quip">Glamorous.</dd>
+          </div>
+          <div class="now-item">
+            <dt>Avoiding</dt>
+            <dd class="now-title">People</dd>
+            <dd class="now-quip">Nothing personal. Unless it&#x27;s you.</dd>
+          </div>
+          <div class="now-item">
+            <dt>Arguing about</dt>
+            <dd class="now-title">The impacts of AI</dd>
+            <dd class="now-quip">Mostly with the AI. It&#x27;s winning.</dd>
+          </div>
+          <div class="now-item">
+            <dt>KB-AI says</dt>
+            <dd class="now-title">Every system is temporary. Every workaround is permanent.</dd>
+          </div>
+        </dl>
+        <p class="small now-stamp">Updated <time datetime="2026-11-14">14 November 2026</time></p>
+      </section>
+      <section class="panel" aria-labelledby="links-h-outie">
+        <h2 id="links-h-outie"><span class="prompt" aria-hidden="true">$ </span>links</h2>
+        <ul class="links">
+          <li><a href="https://tunesday.clubpit.com/">#TunesDay</a>: the weekly verdict</li>
+          <li><a href="https://github.com/KevinWhite">GitHub</a>: KevinWhite</li>
+        </ul>
+      </section>
+    </div>
+    <div class="mode-block" data-mode="innie">
+      <section class="panel about" aria-labelledby="about-h-innie">
+        <h2 id="about-h-innie">Orientation</h2>
+        <p class="lede">[Awaiting refinement] Your innie&#x27;s introduction will appear here once it has been approved.</p>
+        <div class="inset"><p>The work is important. The details are severed.</p></div>
+      </section>
+      <section class="panel feature" aria-labelledby="tunes-h-innie">
+        <h2 id="tunes-h-innie">Music Dance Experience</h2>
+        <p>[Awaiting refinement]</p>
+        <p class="cta-wrap"><a class="cta" href="https://tunesday.clubpit.com/">This week&#x27;s <span>#TunesDay verdict&nbsp;&rarr;</span></a></p>
+      </section>
+      <section class="panel" aria-labelledby="make-h-innie">
+        <h2 id="make-h-innie">Macrodata Refinement</h2>
+        <ul class="cards">
+          <li class="card">
+            <h3>[File pending]</h3>
+            <p>[Awaiting refinement]</p>
+          </li>
+          <li class="card">
+            <h3>[File pending]</h3>
+            <p>[Awaiting refinement]</p>
+          </li>
+          <li class="card">
+            <h3>[File pending]</h3>
+            <p>[Awaiting refinement]</p>
+          </li>
+        </ul>
+      </section>
+      <section class="panel" aria-labelledby="now-h-innie">
+        <h2 id="now-h-innie">Your innie is currently</h2>
+        <!-- Generated from now.json by build.py. Edit now.json, not this block. -->
+        <dl class="now">
+          <div class="now-item">
+            <dt>Listening</dt>
+            <dd class="now-title">[Awaiting refinement]</dd>
+          </div>
+          <div class="now-item">
+            <dt>Reading</dt>
+            <dd class="now-title">[Awaiting refinement]</dd>
+          </div>
+          <div class="now-item">
+            <dt>Watching</dt>
+            <dd class="now-title">[Awaiting refinement]</dd>
+          </div>
+          <div class="now-item">
+            <dt>Playing</dt>
+            <dd class="now-title">[Awaiting refinement]</dd>
+          </div>
+          <div class="now-item">
+            <dt>Learning</dt>
+            <dd class="now-title">[Awaiting refinement]</dd>
+          </div>
+          <div class="now-item">
+            <dt>Building</dt>
+            <dd class="now-title">[Awaiting refinement]</dd>
+          </div>
+          <div class="now-item">
+            <dt>Avoiding</dt>
+            <dd class="now-title">[Awaiting refinement]</dd>
+          </div>
+          <div class="now-item">
+            <dt>Arguing about</dt>
+            <dd class="now-title">[Awaiting refinement]</dd>
+          </div>
+          <div class="now-item">
+            <dt>Kier says</dt>
+            <dd class="now-title">[Awaiting refinement]</dd>
+          </div>
+        </dl>
+        <p class="small now-stamp">Updated <time datetime="2026-11-14">14 November 2026</time></p>
+      </section>
+      <section class="panel" aria-labelledby="links-h-innie">
+        <h2 id="links-h-innie">Approved links</h2>
+        <ul class="links">
+          <li><a href="https://tunesday.clubpit.com/">#TunesDay</a>: the weekly verdict</li>
+          <li><a href="https://github.com/KevinWhite">GitHub</a>: KevinWhite</li>
+        </ul>
+      </section>
+    </div>
+    <!-- /build:main -->
   </main>
 
   <footer class="foot">
-    <p>No cookies. No tracking. No analytics. Nobody is counting, least of all me.</p>
-    <p>Built by KB-AI, approved eventually by Kevin. Hand-coded HTML, like it's 1999 but with better contrast.</p>
-    <p class="cursor-line"><span aria-hidden="true">kevin@clubpit:~$ </span><span class="cursor" aria-hidden="true"></span></p>
+    <!-- build:foot -->
+    <div data-mode="outie">
+      <p>No cookies. No tracking. No analytics. Nobody is counting, least of all me.</p>
+      <p>Built by KB-AI, approved eventually by Kevin. Hand-coded HTML, like it&#x27;s 1999 but with better contrast.</p>
+      <p class="cursor-line"><span aria-hidden="true">kevin@clubpit:~$ </span><span class="cursor" aria-hidden="true"></span></p>
+    </div>
+    <div data-mode="innie">
+      <p>Please enjoy each card equally.</p>
+      <p>No cookies. No tracking. No analytics.</p>
+    </div>
+    <!-- /build:foot -->
   </footer>
 </body>
 </html>
