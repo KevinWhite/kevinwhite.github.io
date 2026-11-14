@@ -34,9 +34,8 @@
     },
     {
       "label": "Building",
-      "title": "This list",
-      "by": "One JSON file and a very small script",
-      "quip": "So I never have to touch the HTML again. That's the theory."
+      "title": "A bin-collection chatbot",
+      "quip": "Glamorous."
     },
     {
       "label": "Avoiding",
